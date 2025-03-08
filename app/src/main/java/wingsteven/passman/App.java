@@ -1,5 +1,7 @@
 package wingsteven.passman;
 
+import java.awt.EventQueue;
+
 public class App {
     static final String GREETING = "Welcome to PassMan, the passphrase manager!";
 
@@ -7,7 +9,16 @@ public class App {
         return GREETING;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-    }
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainWindow window = new MainWindow();
+					window.frmPassman.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 }

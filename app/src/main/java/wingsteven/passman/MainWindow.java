@@ -1,34 +1,25 @@
 package wingsteven.passman;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.KeyEvent;
+import javax.swing.JSplitPane;
+import javax.swing.JScrollPane;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import java.awt.FlowLayout;
 
 public class MainWindow {
 
-	private JFrame frmPassman;
+	JFrame frmPassman;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainWindow window = new MainWindow();
-					window.frmPassman.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the application.
@@ -45,9 +36,6 @@ public class MainWindow {
 		frmPassman.setTitle("Passman");
 		frmPassman.setBounds(100, 100, 450, 300);
 		frmPassman.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JPanel panel_4 = new JPanel();
-		frmPassman.getContentPane().add(panel_4, BorderLayout.CENTER);
 		
 		JMenuBar menuBar = new JMenuBar();
 		frmPassman.setJMenuBar(menuBar);
@@ -72,12 +60,30 @@ public class MainWindow {
 		openVault.setMnemonic(KeyEvent.VK_O);
 		fileMenu.add(openVault);
 		
+		JMenuItem exit = new JMenuItem("Exit");
+		exit.setMnemonic(KeyEvent.VK_X);
+		fileMenu.add(exit);
+		
 		JMenu optionsMenu = new JMenu("Options");
 		optionsMenu.setMnemonic(KeyEvent.VK_O);
 		menuBar.add(optionsMenu);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("New menu item");
 		optionsMenu.add(mntmNewMenuItem_2);
+		
+		JPanel panel = new JPanel();
+		FlowLayout flowLayout = (FlowLayout) panel.getLayout();
+		flowLayout.setAlignment(FlowLayout.LEADING);
+		frmPassman.getContentPane().add(panel, BorderLayout.CENTER);
+		
+		JButton generatePassphraseButton = new JButton("Generate Passphrase");
+		panel.add(generatePassphraseButton);
+		
+		JButton createVaultButton = new JButton("Create Vault");
+		panel.add(createVaultButton);
+		
+		JButton openVaultButton = new JButton("Open Vault");
+		panel.add(openVaultButton);
 	}
 
 }
