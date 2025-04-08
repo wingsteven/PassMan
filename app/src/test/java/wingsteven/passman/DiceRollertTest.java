@@ -45,4 +45,13 @@ class DiceRollertTest {
 			assertTrue(isDiceRollInRange(roll, 1, 6));
 		}
 	}
+	
+	@Test
+	void testGetRandomDigit() {
+		String digit = DiceRoller.getRandomDigit();
+		assertNotNull(digit);
+		assertFalse(digit.isEmpty());
+		int d = Integer.parseInt(digit);
+		assertTrue(0 <= d && d <= 9);
+	}
 }

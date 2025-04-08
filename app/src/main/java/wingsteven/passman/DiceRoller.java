@@ -71,7 +71,11 @@ public class DiceRoller {
 	}
 
 	private static int rollXdY(int x, int y) {
-		return random.nextInt(y) + x;
+		int total = 0;
+		for (int i = 0; i < x; i++) {
+			total += (random.nextInt(y) + 1);
+		}
+		return total;
 	}
 
 	public static int[] rollXd6Individual(int x) {
@@ -80,6 +84,14 @@ public class DiceRoller {
 			rolls[i] = roll1d6();
 		}
 		return rolls;
+	}
+	
+	public static String getRandomDigit() {
+		return "" + random.nextInt(10);
+	}
+
+	public static int roll1dY(int y) {
+		return rollXdY(1, y);
 	}
 
 }
